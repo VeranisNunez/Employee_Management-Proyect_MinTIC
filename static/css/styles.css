@@ -1,0 +1,300 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+}
+
+/* login/register */
+
+.left,
+.right {
+  display: inline-block;
+}
+
+.left {
+  float: left;
+  background-color: #0062cc;
+  width: 65%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.right {
+  float: right;
+  background-color: white;
+  width: 35%;
+  position: initial;
+  top: 0;
+  bottom: 0;
+}
+
+/* .login-container {
+} */
+
+.main-container {
+  padding: 33%;
+}
+
+.login-title {
+  padding: 19%;
+}
+
+.register-title {
+  padding: 11%;
+}
+
+.login-form {
+  padding: 9%;
+}
+
+.login-form h3 {
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+h5 {
+  text-align: center;
+  color: rgb(0, 0, 0);
+}
+
+.login-container form {
+  padding: 10%;
+}
+
+.btnSubmit {
+  width: 100%;
+  border-radius: 1rem;
+  padding: 1.5%;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+.login-form .btnSubmit {
+  font-weight: 600;
+  color: #fdfdfd;
+  background-color: #0062cc;
+}
+
+.login-form .ForgetPwd {
+  display: flex;
+  justify-content: center;
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.swal-button--confirm {
+  background: #0062cc;
+}
+
+/* dashboard */
+
+.container-md {
+  border-radius: 1em;
+  background-color: white;
+}
+
+.content {
+  background-color: #f1f1f1;
+}
+
+.dashboard-title {
+  padding: 10%;
+  text-align: center;
+  font-style: italic;
+  color: white;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #0062cc;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar .item{
+  display: flex;
+  align-items: center;
+  padding: 15px 0px 15px 15px;
+}
+
+.sidebar .item.active,
+.sidebar .item:hover {
+  color: white;
+  text-decoration: none;
+  background-color: #5299fe;
+}
+
+.sidebar a {
+  display: block;
+  color: white;
+  text-align: justify;
+  padding: 0px 10px;
+}
+
+/* .sidebar a.active {
+  background-color: #5299fe;
+  color: white;
+  text-decoration: none;
+} */
+
+.sidebar a:hover:not(.active) {
+  color: white;
+  text-decoration: none;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  min-height: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {
+    float: left;
+  }
+  div.content {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+
+/* Gestion de servicios */
+
+.services-btnSubmit{
+  font-weight: 600;
+  color: #fdfdfd;
+  background-color: #0062cc;
+  width: 60%;
+  border-radius: 1rem;
+  padding: 1.5%;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+}
+
+
+/* User Profile */
+
+.pic-profile {
+  text-align: center;
+}
+
+.pic-profile img{
+  width: 9rem;
+  height: 9rem;
+}
+
+.info-profile{
+  padding: 30px 10px;
+}
+
+.name_loc{
+  display: flex;
+  align-items: center;
+}
+
+.col-9 i, 
+.col-9 p,
+.col-11 i, 
+.col-11 p{
+  color: gray; 
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  padding-right: 10px;
+}
+
+.col-6 h5{
+  color: #444;
+  text-align: justify;
+  padding: 0 0 5px 10px;
+}
+
+.col-6 .data{
+  width: 90%;
+  height: 50px;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  border-radius: 25px;
+  background-color: #eeeeee;
+}
+
+/* User feedback */
+
+.pic-feedback{
+  text-align: center;
+}
+
+.pic-feedback img{
+  width: 3rem;
+  height: 3rem;
+}
+
+.info-feedback{
+  display: flex;
+  padding: 10px 10px;
+  margin-right: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.feedback_text{
+  height: 10em;
+  width: 100%;
+  padding: 20px;
+  margin: 0px 10px;
+  border-radius: 15px;
+  background-color: #eeeeee;
+  overflow: auto;
+}
+
+.feedback_text h5{
+  color: #444;
+  font-size: medium;
+  font-weight: normal;
+  text-align: justify;
+}
+
+
+/* Admin */
+
+.fas {
+  font-size: 12px;
+  color: white;
+}
+
+.btn-feedback {
+  border: none;
+  padding: 5px;
+  width: 8em;
+  cursor: pointer;
+  font-weight: 600;
+  color: #fdfdfd;
+  text-align: center;
+  border-radius: 1rem;
+  background-color: #0062cc;
+}
