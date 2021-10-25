@@ -1,6 +1,7 @@
 from typing import Text
 from flask import Flask, render_template, request, flash, session
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import func
 from flask_migrate import Migrate
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import redirect
@@ -50,7 +51,7 @@ class Feedback(db.Model):
     id_employee = db.Column(db.Integer, db.ForeignKey('profile.id'))
     id_manager = db.Column(db.Integer, db.ForeignKey('profile.id'))
     text = db.Column(db.String)
-    date = db.Column(db.Date, server_default="STRFTIME('%Y-%m-%d', 'NOW', 'localtime')")
+    date = db.Column(db.Date, server_default=func.current_date())
 
 
 class Role(db.Model):
