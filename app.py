@@ -227,6 +227,20 @@ def createFeedback(idEmployee):
     return render_template("dashboard/createFeedback.html", role=role, employee=employee)
 
 
+@app.route("/dashboard/users/delete/<int:idEmployee>", methods=["GET", "POST"])
+def deleteUsers(idEmployee):
+    id = session['id']
+    role = session['role']
+    profileEmployee = Profile.query.filter_by(id=idEmployee).first()
+    userEmployee = User.query.filter_by(profileId=profileEmployee.id).first()
+    db.session.delete(userEmployee)
+    db.session.delete(profileEmployee)
+    db.session.commit()
+    flash("Usuario eliminado")
+    return redirect(url_for('users'))
+    # return render_template("dashboard/createFeedback.html", role=role, employee=employee)
+
+
 @app.route("/dashboard/users/create/", methods=["GET", "POST"])
 def createUsers():
     role = session['role']
