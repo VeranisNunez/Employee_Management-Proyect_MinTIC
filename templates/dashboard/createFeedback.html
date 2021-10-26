@@ -4,13 +4,13 @@
     <div class="sidebar">
         <h4 class="dashboard-title">DASHBOARD</h4>
         {% if role == "Superadministrador" %}
-        <div class="item active">
+        <div class="item">
             <i class="fas fa-id-card-alt"></i>
             <a href="/dashboard/role">Gestionar roles</a>
         </div>
         {% endif %}
         {% if role == "Superadministrador" or role == "Administrador" %}
-        <div class="item">
+        <div class="item active">
             <i class="fas fa-users"></i>
             <a href="/dashboard/users">Gestionar empleados</a>
         </div>

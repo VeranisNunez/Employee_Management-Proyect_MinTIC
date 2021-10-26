@@ -47,7 +47,9 @@
             <div class="container-xxl">
                 <div class="row">
                     <div class="col" style="text-align: left;"><h1>Empleados</h1></div>
-                    <div class="col" style="text-align: right;"><a href="/dashboard/users/create" class="services-btnSubmit" type="submit">Crear nuevo empleado</a></div>
+                    <div class="col btn-NewEmple" style="text-align: right;">
+                        <a href="/dashboard/users/create" class="services-btnSubmit" type="submit">Crear nuevo empleado</a>
+                    </div>
                 </div>
                 <br>
                 <div class="row" style="padding: 1%;">
@@ -56,6 +58,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nombre del usuario</th>
+                                <th scope="col">Role</th>
                                 <th scope="col">Teléfono</th>
                                 <th scope="col">Dirección</th>
                                 <th scope="col">Gestionar</th>
@@ -64,9 +67,11 @@
                         <tbody>
                             {% if profile %}
                                 {% for users in profile %}
+                                    {% set userRole = allusers[loop.index0].roleId %}
                                     <tr>
                                         <th scope="row">{{users.id}}</th>
                                         <td>{{users.fullname}}</td>
+                                        <td>{{userRole}}</td>
                                         <td>{{users.phone}}</td>
                                         <td>{{users.direction}}</td>
                                         <td>
@@ -76,9 +81,11 @@
                                             <a class="btn btn-sm btn-success rounded-circle" title="edit-user">
                                                 <i class="fas fa-user-edit"></i>
                                             </a>
+                                            {% if userRole == 3 %}
                                             <a class="btn btn-sm btn-warning rounded-circle" href="/dashboard/users/feedback/{{users.id}}" title="feedback-user">
                                                 <i class="fas fa-chart-bar"></i>
                                             </a>
+                                            {% endif %}
                                             <a class="btn btn-sm btn-danger rounded-circle" title="delete-user">
                                                 <i class="fas fa-trash"></i>
                                             </a>

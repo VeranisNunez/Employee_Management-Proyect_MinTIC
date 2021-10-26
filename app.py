@@ -1,7 +1,7 @@
 from typing import Text
-from flask import Flask, render_template, request, flash, session
+from flask import Flask, render_template, request, flash, session, url_for
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import func
+from sqlalchemy import func, and_
 from flask_migrate import Migrate
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import redirect
@@ -188,16 +188,21 @@ def users():
     role = session['role']
     roles = Role.query.all()
     if role == "Superadministrador":
-        profile = Profile.query.all()
-        users = User.query.all()
-        return render_template("dashboard/users.html", role=role, profile= profile, roles = roles, allusers=users)
+        users = User.query.filter(User.roleId != 1)
+        if users.count() != 0:
+            profile = []
+            for user in users:
+                profile += Profile.query.filter_by(id=user.profileId)
+            return render_template("dashboard/users.html", role=role, profile= profile, roles = roles, allusers=users)
+        else:
+            return render_template("dashboard/users.html", role=role, roles= roles)
     elif role == "Administrador":
         users = User.query.filter_by(roleId=3)
         if users.count() != 0:
             profile = []
             for user in users:
                 profile += Profile.query.filter_by(id=user.profileId)
-            return render_template("dashboard/users.html", role=role, profile= profile, roles= roles)
+            return render_template("dashboard/users.html", role=role, profile= profile, roles= roles, allusers=users)
         else:
             return render_template("dashboard/users.html", role=role, roles= roles)
     else:
@@ -218,6 +223,7 @@ def createFeedback(idEmployee):
         db.session.add(newFeedback)
         db.session.commit()
         flash("Retroalimentación enviada")
+        return redirect(url_for('users'))
     return render_template("dashboard/createFeedback.html", role=role, employee=employee)
 
 
@@ -255,12 +261,11 @@ def createUsers():
                 newUser.set_password(password)
                 db.session.add(newUser)
                 db.session.commit()
-                profile = Profile.query.all()
                 flash("Usuario registrado")
-                return render_template('dashboard/users.html', role=role, profile= profile, roles = roles, allusers=users)
+                return redirect(url_for('users'))
         else:
             flash("Las contraseñas no coinciden")
-            return render_template("dashboard/createUsers.html")
+            return redirect(url_for('createUsers'))
 
     else:
         role = session['role']
